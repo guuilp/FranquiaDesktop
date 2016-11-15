@@ -64,6 +64,13 @@ public class MainActivity extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("RESUME", "onResume()");
+        getFranquia();
+    }
+
     private void getFranquia() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://192.168.31.185:8080/")
@@ -108,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
 
                 } catch (Exception e) {
                     Log.d("onResponse", "There is an error");
-                    System.out.println("Teste 2");
                     e.printStackTrace();
                 }
             }
