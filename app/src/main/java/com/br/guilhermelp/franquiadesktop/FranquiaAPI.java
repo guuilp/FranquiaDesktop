@@ -1,9 +1,6 @@
-package com.example.guilherme.franquiadesktop;
-
-import java.util.List;
+package com.br.guilhermelp.franquiadesktop;
 
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.http.GET;
 
 /**

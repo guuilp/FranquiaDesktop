@@ -1,4 +1,4 @@
-package com.example.guilherme.franquiadesktop;
+package com.br.guilhermelp.franquiadesktop;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

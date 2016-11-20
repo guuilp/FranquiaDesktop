@@ -1,4 +1,4 @@
-package com.example.guilherme.franquiadesktop;
+package com.br.guilhermelp.franquiadesktop;
 
 import java.util.HashMap;
 import java.util.Map;

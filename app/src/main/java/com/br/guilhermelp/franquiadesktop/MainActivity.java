@@ -1,4 +1,4 @@
-package com.example.guilherme.franquiadesktop;
+package com.br.guilhermelp.franquiadesktop;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -127,19 +127,21 @@ public class MainActivity extends AppCompatActivity {
 
         FranquiaBD franquiaBD = FranquiaBD.findById(FranquiaBD.class, 1);
 
-        franquiaTotalTV.setText(franquiaBD.getFranquiaTotal() + " GB");
-        franquiaDiariaTV.setText(franquiaBD.getFranquiaDiaria() + " GB");
-        maximoAteDataCorrenteTV.setText(franquiaBD.getConsumoMaximoPermitidoAteODiaCorrente() + " GB");
-        consumidoDownloadTV.setText(franquiaBD.getConsumidoDownload() + " GB");
-        quantoAindaPodeConsumirNoDiaTV.setText(franquiaBD.getQuantoAindaPodeConsumirHoje() + " GB");
-        quantoAindaPodeConsumirNoMesTV.setText(franquiaBD.getQuantoAindaPodeConsumirNesseMes() + " GB");
-        consumidoUploadTV.setText(franquiaBD.getConsumidoUpload() + " GB");
-        consumidoTotalTV.setText(franquiaBD.getConsumidoTotal() + " GB");
+        if(franquiaBD != null){
+            franquiaTotalTV.setText(franquiaBD.getFranquiaTotal() + " GB");
+            franquiaDiariaTV.setText(franquiaBD.getFranquiaDiaria() + " GB");
+            maximoAteDataCorrenteTV.setText(franquiaBD.getConsumoMaximoPermitidoAteODiaCorrente() + " GB");
+            consumidoDownloadTV.setText(franquiaBD.getConsumidoDownload() + " GB");
+            quantoAindaPodeConsumirNoDiaTV.setText(franquiaBD.getQuantoAindaPodeConsumirHoje() + " GB");
+            quantoAindaPodeConsumirNoMesTV.setText(franquiaBD.getQuantoAindaPodeConsumirNesseMes() + " GB");
+            consumidoUploadTV.setText(franquiaBD.getConsumidoUpload() + " GB");
+            consumidoTotalTV.setText(franquiaBD.getConsumidoTotal() + " GB");
 
-        if(Double.parseDouble(franquiaBD.getConsumoMaximoPermitidoAteODiaCorrente()) < Double.parseDouble(franquiaBD.getConsumidoDownload())){
-            Snackbar.make(linearLayout, "Você já consumiu mais do que o permitido", Snackbar.LENGTH_LONG).show();
-        } else {
-            Snackbar.make(linearLayout, "Tudo OK!", Snackbar.LENGTH_LONG).show();
+            if(Double.parseDouble(franquiaBD.getConsumoMaximoPermitidoAteODiaCorrente()) < Double.parseDouble(franquiaBD.getConsumidoDownload())){
+                Snackbar.make(linearLayout, "Você já consumiu mais do que o permitido", Snackbar.LENGTH_LONG).show();
+            } else {
+                Snackbar.make(linearLayout, "Tudo OK!", Snackbar.LENGTH_LONG).show();
+            }
         }
     }
 
