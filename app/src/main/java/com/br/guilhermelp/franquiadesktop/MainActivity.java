@@ -3,12 +3,10 @@ package com.br.guilhermelp.franquiadesktop;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -29,7 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    private LinearLayout linearLayout;
+    private SwipeRefreshLayout swipeRefreshLayout;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -43,13 +41,25 @@ public class MainActivity extends AppCompatActivity {
         SugarContext.init(this);
 
         ListView listaDeCursos = (ListView) findViewById(R.id.lista);
-        linearLayout = (LinearLayout) findViewById(R.id.activity_main);
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main);
 
         List<Item> items = getFranquia();
 
         AdapterFranquia adapter = new AdapterFranquia(items, this);
 
         listaDeCursos.setAdapter(adapter);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getFranquia();
+            }
+        });
+
+        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -97,10 +107,14 @@ public class MainActivity extends AppCompatActivity {
         popularListaDeValoresFranquia(franquiaBD, items);
 
         if(Double.parseDouble(franquiaBD.getConsumoMaximoPermitidoAteODiaCorrente()) < Double.parseDouble(franquiaBD.getConsumidoDownload())){
-            Snackbar.make(linearLayout, "Você já consumiu mais do que o permitido", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(swipeRefreshLayout, "Você já consumiu mais do que o permitido", Snackbar.LENGTH_LONG).show();
         } else {
-            Snackbar.make(linearLayout, "Tudo OK!", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(swipeRefreshLayout, "Tudo OK!", Snackbar.LENGTH_LONG).show();
         }
+
+        swipeRefreshLayout.setRefreshing(false);
+
+
         return items;
     }
 
