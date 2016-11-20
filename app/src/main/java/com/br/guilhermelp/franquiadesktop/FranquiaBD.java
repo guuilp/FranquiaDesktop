@@ -1,4 +1,4 @@
-package com.example.guilherme.franquiadesktop;
+package com.br.guilhermelp.franquiadesktop;
 
 import com.orm.SugarRecord;
 
@@ -7,6 +7,7 @@ import com.orm.SugarRecord;
  */
 
 public class FranquiaBD extends SugarRecord {
+
     private String franquiaTotal;
     private String franquiaDiaria;
     private String consumoMaximoPermitidoAteODiaCorrente;

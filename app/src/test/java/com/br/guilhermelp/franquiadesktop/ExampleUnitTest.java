@@ -1,4 +1,4 @@
-package com.example.guilherme.franquiadesktop;
+package com.br.guilhermelp.franquiadesktop;
 
 import org.junit.Test;
 
