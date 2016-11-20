@@ -1,6 +1,7 @@
 package com.br.guilhermelp.franquiadesktop;
 
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -14,20 +15,17 @@ import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.orm.SugarContext;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
     private SwipeRefreshLayout swipeRefreshLayout;
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -43,7 +41,12 @@ public class MainActivity extends AppCompatActivity {
         ListView listaDeCursos = (ListView) findViewById(R.id.lista);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main);
 
-        List<Item> items = getFranquia();
+        List<Item> items = null;
+        try {
+            items = getFranquia();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         AdapterFranquia adapter = new AdapterFranquia(items, this);
 
@@ -52,7 +55,11 @@ public class MainActivity extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                getFranquia();
+                try {
+                    getFranquia();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -70,35 +77,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.d("RESUME", "onResume()");
-        getFranquia();
+        try {
+            getFranquia();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private List<Item> getFranquia() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.31.185:8080/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        FranquiaAPI service = retrofit.create(FranquiaAPI.class);
-        Call<Franquia> call = service.getFranquia();
-        call.enqueue(new Callback<Franquia>() {
-            @Override
-            public void onResponse(Call<Franquia> call, Response<Franquia> response) {
-                try {
-                    Log.d("TESTE", "onResponse()");
+    private List<Item> getFranquia() throws IOException {
 
-                    salvarInformacoesNoBanco(response);
-
-                } catch (Exception e) {
-                    Log.d("onResponse", "There is an error");
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Franquia> call, Throwable t) {
-                Log.d("onFailure", t.toString());
-            }
-        });
+        try {
+            salvarInformacoesNoBanco(new ExtratorService().execute().get());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
         FranquiaBD franquiaBD = FranquiaBD.findById(FranquiaBD.class, 1);
 
@@ -113,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         swipeRefreshLayout.setRefreshing(false);
-
 
         return items;
     }
@@ -130,22 +123,21 @@ public class MainActivity extends AppCompatActivity {
             items.add(new Item("Consumido Upload", franquiaBD.getConsumidoUpload() + " GB"));
             items.add(new Item("Consumido Total", franquiaBD.getConsumidoTotal() + " GB"));
 
-
         }
     }
 
-    private void salvarInformacoesNoBanco(Response<Franquia> response) {
+    private void salvarInformacoesNoBanco(Franquia franquia) {
         Calendar c = Calendar.getInstance();
         int ultimoDiaDoMes = c.getActualMaximum(Calendar.DAY_OF_MONTH);
         int diaCorrente = c.get(Calendar.DAY_OF_MONTH);
 
-        Double franquiaDiaria = Double.parseDouble(response.body().getFranquia()) / ultimoDiaDoMes;
+        Double franquiaDiaria = Double.parseDouble(franquia.getFranquia()) / ultimoDiaDoMes;
 
         Double usoMaximoDaFranquiaAteODiaCorrente = franquiaDiaria * diaCorrente;
 
-        Double quantoAindaPodeConsumirNoDia = usoMaximoDaFranquiaAteODiaCorrente - Double.parseDouble(response.body().getConsumoDownload());
+        Double quantoAindaPodeConsumirNoDia = usoMaximoDaFranquiaAteODiaCorrente - Double.parseDouble(franquia.getConsumoDownload());
 
-        Double quantoAindaPodeConsumirNoMes = Double.parseDouble(response.body().getFranquia()) - Double.parseDouble(response.body().getConsumoDownload());
+        Double quantoAindaPodeConsumirNoMes = Double.parseDouble(franquia.getFranquia()) - Double.parseDouble(franquia.getConsumoDownload());
 
         FranquiaBD franquiaBD = FranquiaBD.findById(FranquiaBD.class, 1);
 
@@ -154,14 +146,14 @@ public class MainActivity extends AppCompatActivity {
             franquiaBD.setId(1L);
         }
 
-        franquiaBD.setFranquiaTotal(response.body().getFranquia());
+        franquiaBD.setFranquiaTotal(franquia.getFranquia());
         franquiaBD.setFranquiaDiaria(String.format(Locale.US,"%.2f", franquiaDiaria));
         franquiaBD.setConsumoMaximoPermitidoAteODiaCorrente(String.format(Locale.US, "%.2f", usoMaximoDaFranquiaAteODiaCorrente));
-        franquiaBD.setConsumidoDownload(response.body().getConsumoDownload());
+        franquiaBD.setConsumidoDownload(franquia.getConsumoDownload());
         franquiaBD.setQuantoAindaPodeConsumirHoje(String.format(Locale.US, "%.2f", quantoAindaPodeConsumirNoDia));
         franquiaBD.setQuantoAindaPodeConsumirNesseMes(String.format(Locale.US, "%.2f", quantoAindaPodeConsumirNoMes));
-        franquiaBD.setConsumidoUpload(response.body().getConsumoUpload());
-        franquiaBD.setConsumidoTotal(response.body().getConsumoTotal());
+        franquiaBD.setConsumidoUpload(franquia.getConsumoUpload());
+        franquiaBD.setConsumidoTotal(franquia.getConsumoTotal());
         franquiaBD.save();
     }
 
@@ -200,4 +192,5 @@ public class MainActivity extends AppCompatActivity {
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
     }
+
 }
