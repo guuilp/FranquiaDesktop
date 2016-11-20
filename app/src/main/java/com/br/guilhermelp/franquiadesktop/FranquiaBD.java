@@ -7,6 +7,7 @@ import com.orm.SugarRecord;
  */
 
 public class FranquiaBD extends SugarRecord {
+
     private String franquiaTotal;
     private String franquiaDiaria;
     private String consumoMaximoPermitidoAteODiaCorrente;
