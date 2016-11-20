@@ -9,7 +9,6 @@ public class Franquia{
     private String consumoDownload;
     private String consumoUpload;
     private String consumoTotal;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getFranquia() {
         return franquia;
@@ -41,14 +40,6 @@ public class Franquia{
 
     public void setConsumoTotal(String consumoTotal) {
         this.consumoTotal = consumoTotal;
-    }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 
 }
