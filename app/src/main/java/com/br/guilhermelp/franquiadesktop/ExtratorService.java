@@ -14,7 +14,7 @@ import java.io.IOException;
  * Created by Guilherme on 20/11/2016.
  */
 
-public class ExtratorService extends AsyncTask<Object, Object, Franquia> {
+public class ExtratorService extends AsyncTask<String, Object, Franquia> {
 
     private static final String IMAGEM_CABECALHO = "imagens/sac_cabecalho.png";
     private static final String IMAGEM_FRANQUIA = "imagens/bitazul.png";
@@ -22,17 +22,18 @@ public class ExtratorService extends AsyncTask<Object, Object, Franquia> {
     private static final int IMAGEM_CONSUMIDO_UPLOAD = 4;
     private static final int IMAGEM_CONSUMIDO_TOTAL = 5;
 
-    private static final String senha = "WAND300";
-    private static final String usuario = "100936";
-
     private static final String URL_FRANQUIA = "http://sac.desktop.com.br/Cliente_Quota.jsp";
     private static final String URL_INICIAL = "http://sac.desktop.com.br/Cliente_Menu.jsp";
     private static final String URL_LOGIN = "http://sac.desktop.com.br/Cliente_Login.jsp";
 
     @Override
-    protected Franquia doInBackground(Object... voids) {
+    protected Franquia doInBackground(String... strings) {
         Franquia franquia = new Franquia();
         Document page = null;
+        String usuario, senha;
+        usuario = strings[0];
+        senha = strings[1];
+
         try{
             Connection.Response loginForm = Jsoup.connect(URL_LOGIN)
                     .method(Connection.Method.GET)

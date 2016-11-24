@@ -1,5 +1,8 @@
 package com.br.guilhermelp.franquiadesktop;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,6 +17,7 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.orm.SugarContext;
+import com.orm.SugarRecord;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -87,7 +91,14 @@ public class MainActivity extends AppCompatActivity {
     private List<Item> getFranquia() throws IOException {
 
         try {
-            salvarInformacoesNoBanco(new ExtratorService().execute().get());
+            ConnectivityManager connectivityManager
+                    = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+
+            if(activeNetworkInfo != null && activeNetworkInfo.isConnected()){
+                Login login = SugarRecord.findById(Login.class, 1);
+                salvarInformacoesNoBanco(new ExtratorService().execute(login.getUsuario(), login.getSenha()).get());
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
