@@ -1,4 +1,4 @@
-package com.br.guilhermelp.franquiadesktop;
+package com.br.guilhermelp.franquiadesktop.helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
