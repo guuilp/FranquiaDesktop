@@ -1,4 +1,4 @@
-package com.br.guilhermelp.franquiadesktop;
+package com.br.guilhermelp.franquiadesktop.model;
 
 import com.orm.SugarRecord;
 

@@ -1,4 +1,4 @@
-package com.br.guilhermelp.franquiadesktop;
+package com.br.guilhermelp.franquiadesktop.model;
 
 import com.orm.SugarRecord;
 
@@ -9,6 +9,7 @@ import com.orm.SugarRecord;
 public class Login extends SugarRecord {
     private String usuario;
     private String senha;
+    private String nome;
 
     public String getUsuario() {
         return usuario;
@@ -24,5 +25,13 @@ public class Login extends SugarRecord {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

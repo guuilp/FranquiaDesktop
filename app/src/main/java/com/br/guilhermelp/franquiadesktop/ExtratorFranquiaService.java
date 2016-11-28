@@ -14,7 +14,7 @@ import java.io.IOException;
  * Created by Guilherme on 20/11/2016.
  */
 
-public class ExtratorService extends AsyncTask<String, Object, Franquia> {
+public class ExtratorFranquiaService extends AsyncTask<String, Object, Franquia> {
 
     private static final String IMAGEM_CABECALHO = "imagens/sac_cabecalho.png";
     private static final String IMAGEM_FRANQUIA = "imagens/bitazul.png";

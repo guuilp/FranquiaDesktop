@@ -14,20 +14,17 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
-import android.widget.TextView;
-import android.widget.Toast;
 
+import com.br.guilhermelp.franquiadesktop.helper.SessionManager;
+import com.br.guilhermelp.franquiadesktop.model.Cliente;
+import com.br.guilhermelp.franquiadesktop.model.Login;
 import com.orm.SugarContext;
 import com.orm.SugarRecord;
 
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
-
-import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by Guilherme on 21/11/2016.
@@ -38,17 +35,16 @@ public class LoginActivity extends AppCompatActivity {
     private static final int REQUEST_SIGNUP = 0;
     private SessionManager session;
 
-
-    @InjectView(R.id.input_email) EditText _emailText;
-    @InjectView(R.id.loginActivity) ScrollView _scrollView;
-    @InjectView(R.id.input_password) EditText _passwordText;
-    @InjectView(R.id.btn_login) Button _loginButton;
+    @BindView(R.id.input_email) EditText _emailText;
+    @BindView(R.id.loginActivity) ScrollView _scrollView;
+    @BindView(R.id.input_password) EditText _passwordText;
+    @BindView(R.id.btn_login) Button _loginButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         SugarContext.init(this);
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +75,6 @@ public class LoginActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
                 R.style.AppTheme_Dark_Dialog);
 
-
         final String usuario = _emailText.getText().toString();
         final String senha = _passwordText.getText().toString();
 
@@ -97,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void run() {
                             Franquia franquia = null;
                             try {
-                                franquia = new ExtratorService().execute(usuario, senha).get();
+                                franquia = new ExtratorFranquiaService().execute(usuario, senha).get();
                                 if(franquia.getFranquia() != null){
                                     onLoginSuccess(usuario, senha);
                                 } else {
@@ -112,15 +107,12 @@ public class LoginActivity extends AppCompatActivity {
 
                             progressDialog.dismiss();
                         }
-                    }, 3000);
+                    }, 2000);
         } else {
             Snackbar.make(_scrollView, "Você não está conectado à internet", Snackbar.LENGTH_LONG).show();
             _loginButton.setEnabled(true);
         }
-
-
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -137,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    public void onLoginSuccess(String usuario, String senha) {
+    public void onLoginSuccess(String usuario, String senha) throws ExecutionException, InterruptedException {
         Login login = SugarRecord.findById(Login.class, 1);
 
         if(login == null){
@@ -148,6 +140,16 @@ public class LoginActivity extends AppCompatActivity {
         login.setUsuario(usuario);
         login.setSenha(senha);
         login.save();
+
+        Cliente cliente = SugarRecord.findById(Cliente.class, 1);
+
+        if(cliente == null){
+            cliente = new Cliente();
+            cliente.setId(1L);
+        }
+
+        cliente.setNome(new ExtratorClienteService().execute(usuario, senha).get());
+        cliente.save();
 
         _loginButton.setEnabled(true);
         session.setLogin(true);

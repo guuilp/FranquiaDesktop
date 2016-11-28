@@ -4,14 +4,19 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.br.guilhermelp.franquiadesktop.model.Cliente;
+import com.br.guilhermelp.franquiadesktop.model.FranquiaBD;
+import com.br.guilhermelp.franquiadesktop.model.Item;
+import com.br.guilhermelp.franquiadesktop.model.Login;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
@@ -26,9 +31,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-    private SwipeRefreshLayout swipeRefreshLayout;
+public class MainActivity extends AppCompatActivity {
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -36,21 +42,47 @@ public class MainActivity extends AppCompatActivity {
      */
     private GoogleApiClient client;
 
+    @BindView(R.id.activity_main) SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.lista) ListView listaDeCursos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ButterKnife.bind(this);
         SugarContext.init(this);
 
-        ListView listaDeCursos = (ListView) findViewById(R.id.lista);
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main);
-
         List<Item> items = null;
+
+        Cliente cliente = SugarRecord.findById(Cliente.class, 1);
+        String nome = null;
+
+        if(cliente == null){
+            cliente = new Cliente();
+            cliente.setId(1L);
+            Login login = SugarRecord.findById(Login.class, 1);
+            try {
+                nome = new ExtratorClienteService().execute(login.getUsuario(), login.getSenha()).get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        } else {
+            nome = cliente.getNome();
+        }
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setSubtitle(nome);
+        actionBar.getSubtitle();
+
         try {
             items = getFranquia();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
         AdapterFranquia adapter = new AdapterFranquia(items, this);
 
@@ -88,6 +120,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private String getNomeCliente(){
+
+        return "Guilherme Lima Pereira";
+    }
+
     private List<Item> getFranquia() throws IOException {
 
         try {
@@ -97,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(activeNetworkInfo != null && activeNetworkInfo.isConnected()){
                 Login login = SugarRecord.findById(Login.class, 1);
-                salvarInformacoesNoBanco(new ExtratorService().execute(login.getUsuario(), login.getSenha()).get());
+                salvarInformacoesNoBanco(new ExtratorFranquiaService().execute(login.getUsuario(), login.getSenha()).get());
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -125,14 +162,19 @@ public class MainActivity extends AppCompatActivity {
     private void popularListaDeValoresFranquia(FranquiaBD franquiaBD, List<Item> items) {
         if(franquiaBD != null){
 
-            items.add(new Item("Franquia Total", franquiaBD.getFranquiaTotal() + " GB"));
-            items.add(new Item("Franquia Diária", franquiaBD.getFranquiaDiaria() + " GB"));
-            items.add(new Item("Consumo máximo permitido até o dia corrente", franquiaBD.getConsumoMaximoPermitidoAteODiaCorrente() + " GB"));
-            items.add(new Item("Consumido Download", franquiaBD.getConsumidoDownload() + " GB"));
-            items.add(new Item("Quanto ainda pode consumir hoje", franquiaBD.getQuantoAindaPodeConsumirHoje() + " GB"));
-            items.add(new Item("Quanto ainda pode consumir nesse mês", franquiaBD.getQuantoAindaPodeConsumirNesseMes() + " GB"));
-            items.add(new Item("Consumido Upload", franquiaBD.getConsumidoUpload() + " GB"));
-            items.add(new Item("Consumido Total", franquiaBD.getConsumidoTotal() + " GB"));
+            items.add(new Item("Total", franquiaBD.getFranquiaTotal() + " GB"));
+            items.add(new Item("Diária", franquiaBD.getFranquiaDiaria() + " GB"));
+
+            items.add(new Item("Consumo Download", franquiaBD.getConsumidoDownload() + " GB"));
+            items.add(new Item("Consumo Upload", franquiaBD.getConsumidoUpload() + " GB"));
+
+            //items.add(new Item("Total (Download + Upload)", franquiaBD.getConsumidoTotal() + " GB"));
+
+//            items.add(new Item("Permitido até o dia corrente", franquiaBD.getConsumoMaximoPermitidoAteODiaCorrente() + " GB"));
+
+            items.add(new Item("Disponível para consumo hoje", franquiaBD.getQuantoAindaPodeConsumirHoje() + " GB"));
+            items.add(new Item("Disponível para consumo no mês", franquiaBD.getQuantoAindaPodeConsumirNesseMes() + " GB"));
+
 
         }
     }

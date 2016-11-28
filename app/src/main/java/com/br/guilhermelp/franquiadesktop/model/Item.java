@@ -1,4 +1,4 @@
-package com.br.guilhermelp.franquiadesktop;
+package com.br.guilhermelp.franquiadesktop.model;
 
 /**
  * Created by Guilherme on 20/11/2016.
