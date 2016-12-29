@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-24.2.1_e220da031ff6ca560affe0c7181d160f71243fb8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_984c9d25bee1329053179eb59c12e7da82fee15e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Guilherme\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\gson-2.7_c1d5ecae0ec6725be8965a0bc205b2f751d686a8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-24.2.1_46393ea6ae78c91bf094491eba9d809396888760.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-24.2.1_e3e27da4c640dc07189f6c58c454e51c3a794d71.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-appindexing-8.4.0_a90d3f49c52378e3bc4b883305b5e74509c0ccca.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="894922f67adeaaef51f077a29e315da21a3382d3">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-24.0.0_73d78cf4fc08dbff0878fd1080d2e2c4d95f9214.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-24.2.1_031b7ed2e32dd0c77593c86f8f09776874182c87.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Guilherme\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.1.0\2de7cd8b95b7021b1d597f049bcb422055119f2c\retrofit-2.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="2de7cd8b95b7021b1d597f049bcb422055119f2c">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\retrofit-2.1.0_591466e972e62325882a8911c3fff46a552e1d8b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-24.2.1_0b4a81562efcd6b0c6c61f68cc3aa54238e5438c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Guilherme\.gradle\caches\modules-2\files-2.1\org.jsoup\jsoup\1.9.2\5e3bda828a80c7a21dfbe2308d1755759c2fd7b4\jsoup-1.9.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="5e3bda828a80c7a21dfbe2308d1755759c2fd7b4">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\jsoup-1.9.2_8b5acaed12d04d8679102e3743024c02d40958e8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Program Files\Android\Android Studio\gradle\m2repository\com\google\guava\guava\18.0\guava-18.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="cce0823396aa693798f8882e64213b1772032b09">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\guava-18.0_23ae9d619c9ad952ac11ce7bff78df802e3e98c2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_13039c560f2c55c7459ba77a5470bad6ec528e55.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-24.2.1_83f3f39891254d081daa69d8fa34ac99095dc56b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_e0190963f1294f2e4f16af476277e86d93da2d02.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-8.4.0_0834e10293c77a7aee3d562c0790027e7956bea6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.github.satyan\sugar\1.4\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="ac045b53684345f4ec8468477e8fc5034d0d2bfd">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\com.github.satyan-sugar-1.4_b157abd1a41b181a559f2b7836e5e0e77cdccb40.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Guilherme\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.4.0\ea392375cf9ff59234a82e7928a204215ccc98cd\butterknife-annotations-8.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="ea392375cf9ff59234a82e7928a204215ccc98cd">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\butterknife-annotations-8.4.0_ca191fc7435006ba7c69e8972e151166c3edf25b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-24.2.1_5c8ff955fa23fe29681218fde324d10c6b775129.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.jakewharton\butterknife\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="a07818a1ecabdb149998823429cce555af4b9cba">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\com.jakewharton-butterknife-8.4.0_6d6c4b2691886d51dd5ed8e810c92dac33f0acff.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Guilherme\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\support-annotations-24.2.1_2f8dc47c40cd06e45bbfb4d690d9f491d5b2ba84.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_29d0e5977155b01783509121f6adee4fb4514f45.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Guilherme\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.3.0\2b802460eea20f8f2ad9c08c74e0f14718e88aa9\okhttp-3.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="2b802460eea20f8f2ad9c08c74e0f14718e88aa9">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\okhttp-3.3.0_e5a3356a7ee8f980e6a8152b03e4a84761217c0f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-base-8.4.0_1cf09cf30534404e920e896a1fe9d4a673f15dc5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.android.support\design\24.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="fc29308a7a8f6d4407b34634eb48fb8b817f9b23">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\com.android.support-design-24.0.0_f8da579f099d482c131f10b4bbee766892ee8199.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-24.2.1_ae554fbd3990c1db6a0b55b649b165af8966e5d9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Guilherme\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.1.0\aa557d71ead91cbf26e0c316a0f593d168303309\converter-gson-2.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="aa557d71ead91cbf26e0c316a0f593d168303309">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\converter-gson-2.1.0_9a439e007151e74e56315293476ef01b33d98c90.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_f524ab19931a42863c8bdc6c7c7d9910e5ca48bf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-24.2.1_47c9b84705ad71759000d6e8130abbc957ab9480.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Guilherme\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.8.0\5ea7af56cc7c567ed9856d99efb30740e9b17ff\okio-1.8.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="05ea7af56cc7c567ed9856d99efb30740e9b17ff">
+        <dex dex="E:\Git_Projects\FranquiaDesktop\app\build\intermediates\pre-dexed\debug\okio-1.8.0_81dc631b61d017d256c22bc5c63c98862c1c56e2.jar" />
+    </item>
+
+</items>
