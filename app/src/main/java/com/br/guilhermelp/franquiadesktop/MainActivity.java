@@ -58,16 +58,22 @@ public class MainActivity extends AppCompatActivity {
         Cliente cliente = SugarRecord.findById(Cliente.class, 1);
         String nome = null;
 
-        if(cliente == null){
-            cliente = new Cliente();
-            cliente.setId(1L);
-            Login login = SugarRecord.findById(Login.class, 1);
-            try {
-                nome = new ExtratorClienteService().execute(login.getUsuario(), login.getSenha()).get();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
+        if(isConnected()) {
+            if (cliente.getNome() == null) {
+                cliente = new Cliente();
+                cliente.setId(1L);
+                Login login = SugarRecord.findById(Login.class, 1);
+                try {
+                    nome = new ExtratorClienteService().execute(login.getUsuario(), login.getSenha()).get();
+                    cliente.setNome(nome);
+                    cliente.save();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                nome = cliente.getNome();
             }
         } else {
             nome = cliente.getNome();
@@ -128,11 +134,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Item> getFranquia() throws IOException {
 
         try {
-            ConnectivityManager connectivityManager
-                    = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-
-            if(activeNetworkInfo != null && activeNetworkInfo.isConnected()){
+            if (isConnected()){
                 Login login = SugarRecord.findById(Login.class, 1);
                 salvarInformacoesNoBanco(new ExtratorFranquiaService().execute(login.getUsuario(), login.getSenha()).get());
             }
@@ -157,6 +159,17 @@ public class MainActivity extends AppCompatActivity {
         swipeRefreshLayout.setRefreshing(false);
 
         return items;
+    }
+
+    private boolean isConnected() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+
+        if(activeNetworkInfo != null && activeNetworkInfo.isConnected()){
+            return true;
+        }
+        return false;
     }
 
     private void popularListaDeValoresFranquia(FranquiaBD franquiaBD, List<Item> items) {
